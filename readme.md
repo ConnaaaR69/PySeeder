@@ -17,3 +17,7 @@ How to use these files, using the players table as an example
 **Step 5**: Paste the following column names into the "Column names" box: f_name,l_name,position,cap,age
 
 Note: The column names may have to be changed if you named them differently in step 0
+
+## Future features:
+- automatically push to database
+- generate id (already works) so that you don't have to define columns
