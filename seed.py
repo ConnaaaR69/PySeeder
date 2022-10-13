@@ -12,7 +12,7 @@ import random
 
 # Randomly selects from lists and combines
 # 'playernumber' arg can be changed to alter the number of entries generated
-def randPlayers(playerNumber=11):
+def randPlayers(playerNumber=22):
     print('--- Generated Player Names ---')
     print(
         'fname' + ' ' +
@@ -60,7 +60,7 @@ def randPlayers(playerNumber=11):
     print('-----------------------')
 
 
-def randStaff(staffNumber=500):
+def randStaff(staffNumber=100):
     print('--- Generated Staff Names ---')
     print(
         'fname' + ' ' +
