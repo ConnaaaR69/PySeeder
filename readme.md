@@ -22,3 +22,6 @@ Note: The column names may have to be changed if you named them differently in s
 - Automatically push to database
 - Fix having to define the line ending
 - Generate id (already works) so that you don't have to define columns
+
+### Sekrit notes
+I know my code is ass but it works 
