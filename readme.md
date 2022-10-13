@@ -18,7 +18,7 @@ Note: The column names may have to be changed if you named them differently in s
 
 ## Future features:
 - Automatically push to database
-- Fix having to define the line ending
+- ~~Fix having to define the line ending~~✔
 - Generate id (already works, not implemented) so that you don't have to define columns
 
 ### Sekrit notes
