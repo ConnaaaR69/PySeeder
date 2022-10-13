@@ -1,6 +1,6 @@
-#Usage:
+# Usage:
 
-!!! Make sure Python is installed and set up in your system environment !!!
+## !!! Make sure Python is installed and set up in your system environment !!!
 How to use these files, using the players table as an example
 
 **Step 0**: Create database and prerequisite tables, with required cols
