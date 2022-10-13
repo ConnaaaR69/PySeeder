@@ -7,7 +7,12 @@
 
 
 import csv
+import json
 import random
+import pyodbc
+
+
+# import lists.py
 
 # Lists for random assignment
 firstNames = [
@@ -23,7 +28,7 @@ positions = ["Goalkeeper", "Right Back", "Left Back", "Center Back", "Sweeper",
 
 # Randomly selects from lists and combines
 # 'playernumber' arg can be changed to alter the number of entries generated
-def randPlayers(list1, list2, playerNumber=11):
+def randPlayers(playerNumber=100):
     print('--- Generated Names ---')
     print(
         'fname' + ' ' +
@@ -32,13 +37,17 @@ def randPlayers(list1, list2, playerNumber=11):
         'cap' + ' ' +
         'age')
     print('-----------------------')
-    i = 0
 
+    i = 0
+    posCounter = 0
     while i < playerNumber:
         # id = i + 1
-        fname = random.choice(list1)
-        lname = random.choice(list2)
-        position = positions[i]
+
+        file = open('names.json')
+        data = json.load(file)
+        fname = random.choice(data['names'])
+        lname = random.choice(data['names'])
+        position = positions[posCounter]
         cap = random.randint(1, 50)
         age = random.randint(18, 31)
 
@@ -59,20 +68,28 @@ def randPlayers(list1, list2, playerNumber=11):
 
         # iterate
         i += 1
+        posCounter += 1
+        if(posCounter >= 11):
+            posCounter = 0
+
     print('-----------------------')
 
 
 # player
 header = ["f_name", "l_name", "position", "cap", "age"]
 player_list = []
-randPlayers(firstNames, lastNames)
+# randPlayers(firstNames, lastNames)
+randPlayers()
 
 
 with open("players.csv", "w") as play:
     # Sets delimitation and line terminations for CSV file
-    player = csv.writer(play, delimiter=",", quotechar='"',
-                        quoting=csv.QUOTE_ALL, lineterminator=';')
-    # player.writerow(header)
+    player = csv.writer(
+        play,
+        delimiter=",",
+        quotechar='"',
+        quoting=csv.QUOTE_ALL,
+        lineterminator=';')
 
     # Writes player_list array to file
     player.writerows(player_list)
