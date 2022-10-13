@@ -19,5 +19,6 @@ How to use these files, using the players table as an example
 Note: The column names may have to be changed if you named them differently in step 0
 
 ## Future features:
-- automatically push to database
-- generate id (already works) so that you don't have to define columns
+- Automatically push to database
+- Fix having to define the line ending
+- Generate id (already works) so that you don't have to define columns
