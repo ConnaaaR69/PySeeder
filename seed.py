@@ -7,16 +7,19 @@
 import csv
 import json
 import random
+import os
 from classes.Player import Player
 
 pNum = input(
     'Enter number of players to generate. There are 11 players per team. \n')
+pNum = int(pNum)
+
 
 # Randomly selects from lists and combines
 # 'playernumber' arg can be changed to alter the number of entries generated
 
 
-def randPlayers(playerNumber=int(pNum)):
+def randPlayers(playerNumber=pNum):
 
     print('Generating Players')
 
@@ -89,7 +92,16 @@ def randStaff(staffNumber=100):
 # player
 player_list = []
 staff_list = []
-randPlayers()
+if(pNum > 250):
+    os.system('cls||clear')
+    sanityCheck = input(
+        '{} entries will be created. Are you sure? Type \'Y\' to continue or any other entry to escape. \n'.format(pNum))
+else:
+    randPlayers()
+if(sanityCheck == 'Y'):
+    randPlayers()
+else:
+    quit()
 # randStaff()
 
 
