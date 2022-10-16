@@ -22,4 +22,4 @@ Note: The column names may have to be changed if you named them differently in s
 - Generate id (already works, not implemented) so that you don't have to define columns
 
 ### Sekrit notes
-I know my code is ass but it works 
+I know my code isn't great but it works 
