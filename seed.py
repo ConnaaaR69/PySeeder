@@ -11,7 +11,7 @@ import os
 from classes.Player import Player
 
 pNum = input(
-    'Enter number of players to generate. There are 11 players per team. \n')
+    'Enter number of TEAMS to generate. There are 11 players per team. \n')
 pNum = int(pNum)
 
 
@@ -31,26 +31,19 @@ def randPlayers(playerNumber=pNum):
 
     while i < playerNumber:
 
-        player = Player(pos=positions[posCounter])
-        playerItrArr = [
-            player.fname,
-            player.lname,
-            player.pos,
-            player.team_id,
-            player.cap,
-            player.goals,
-            player.games,
-            player.assists,
-            player.age]
-        player_list.append(playerItrArr)
+        player = Player(positions[posCounter], team_id)
+        player_list.append(player.getAll())
 
-        # iterate
-        i += 1
+        print(' Made player: {}'.format(vars(player)))
+
+        # iteratives
         posCounter += 1
-        if(i % 11 == 0):
-            team_id += 1
+
+        # Reset Positions and increment team
         if(posCounter >= len(positions)):
             posCounter = 0
+            team_id += 1
+            i += 1
 
 
 def randStaff(staffNumber=100):
@@ -92,16 +85,20 @@ def randStaff(staffNumber=100):
 # player
 player_list = []
 staff_list = []
-if(pNum > 250):
+if(pNum > 10):
     os.system('cls||clear')
     sanityCheck = input(
-        '{} entries will be created. Are you sure? Type \'Y\' to continue or any other entry to escape. \n'.format(pNum))
+        '{} entities will be created. Are you sure? Type \'Y\' to continue or any other entry to escape. \n'.format(pNum * 11))
+
+    if(sanityCheck.upper() == 'Y'):
+        randPlayers()
+    else:
+        print(sanityCheck)
+        print('Aborting...')
+        quit()
 else:
     randPlayers()
-if(sanityCheck == 'Y'):
-    randPlayers()
-else:
-    quit()
+
 # randStaff()
 
 
