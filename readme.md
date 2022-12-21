@@ -5,8 +5,11 @@
 How to use these files, using the players table as an example
 
 **Step 0**: Create MySQL database and prerequisite tables, with required cols
+
 **Step 1**: run seed.py
+
 **Step 2**: enter teams to create
+
 **Step 3**: complete, review in terminal or in dbms
 
 
