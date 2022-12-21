@@ -4,11 +4,8 @@
 # Step 2: Input number of teams
 # Step 3: Bask in its glory!
 
-
-import json
-import random
 import pymysql
-import os
+from os import system as os
 from classes.Player import Player
 from classes.Staff import Staff
 
