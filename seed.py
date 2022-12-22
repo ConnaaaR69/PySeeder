@@ -20,17 +20,28 @@ DATABASE = 'wcdb'
 
 ###############################
 
-
+# get number of teams to create
 pNum = input(
     'Enter number of TEAMS to generate. There are 11 players per team. \n')
-pNum = int(pNum)
 
+# catches illegal inputs
+try:
+    pNum = int(pNum)
+except:
+    raise TypeError("Input not int")
+
+if pNum < 1:
+    raise ValueError("Cannot create less than one (1) team")
+
+# connect to db using env variables
 cnx = pymysql.connect(user=USERNAME, password=PASSWORD,
                       host=HOST,
                       database=DATABASE)
 
 # Create a cursor
 cursor = cnx.cursor()
+
+# Creates players
 
 
 def randPlayers(playerNumber=pNum):
@@ -75,7 +86,7 @@ def randPlayers(playerNumber=pNum):
             i += 1
 
 
-def randStaff(staffNumber=100):
+def randStaff(staffNumber=pNum*5):
     # THIS WILL EMPTY TABLE BEFORE SEEDING
     clear = "TRUNCATE TABLE `{}`.`team_staff`".format(DATABASE)
     cursor.execute(clear)
@@ -118,22 +129,30 @@ def randStaff(staffNumber=100):
 # Checks correct input if high number of operations
 player_list = []
 staff_list = []
+
 if(pNum > 10):
     os.system('cls||clear')
     sanityCheck = input(
         '{} entities will be created. Are you sure? Type \'Y\' to continue or any other entry to escape. \n'.format(pNum * 11))
 
     if(sanityCheck.upper() == 'Y'):
-        randPlayers()
-        randStaff()
+        try:
+            randPlayers()
+            randStaff()
+        except:
+            print("Something went wrong with this file")
         cursor.close()
         cnx.close()
     else:
         print(sanityCheck)
         print('Aborting...')
         quit()
+
 else:
-    randPlayers()
-    randStaff()
+    try:
+        randPlayers()
+        randStaff()
+    except:
+        print("Something went wrong with this file")
     cursor.close()
     cnx.close()
